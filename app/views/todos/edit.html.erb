@@ -1,0 +1,15 @@
+<h1>Editing todo</h1>
+
+<%= form_for :todo, url: todo_path(@todo), method: :patch do |f| %>
+
+  <p>
+    <%= f.text_area :text %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+  <% end %>
+
+  <%= link_to 'Back to List', todos_path %>

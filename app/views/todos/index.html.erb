@@ -1,0 +1,29 @@
+<h1 style="color: grey">My Todo List</h1>
+
+<table>
+  <tr>
+    <th><h2 style="color: grey">待办事项：</h2></th>
+  </tr>
+
+  <% @todos.each do |todo| %>
+    <tr>
+      <td><%= todo.text %></td>
+      <td><%= link_to '显示', todo_path(todo) %></td>
+      <td><%= link_to '修改', edit_todo_path(todo) %></td>
+      <td><%= link_to '删除', todo_path(todo),
+      method: :delete, data: { confirm: 'Are you sure?'} %></td>
+    </tr>
+    <% end %>
+</table>
+
+<%= form_for :todo, url: todos_path do |f| %>
+  <p>
+    <h2 style="color: grey">添加:</h2>
+    <%= f.text_area :text %>
+  </p>
+
+  <p>
+    <%= f.submit '保存' %>
+  </p>
+
+  <% end %>
